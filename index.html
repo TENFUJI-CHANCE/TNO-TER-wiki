@@ -1,17 +1,122 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新秩序：东方红Wiki</title>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="./css/main.css" <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js">
+    </script>
 </head>
-<body>
-    <h1>Hello, Bootstrap!</h1>
 
+<body>
+    <header>
+
+    </header>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+
+            <!-- 品牌/logo -->
+            <a class="navabr-brand" href="#">
+                <img src="./image/ter_default.png" alt="Logo" width="76" height="59">
+            </a>
+
+            <!-- 导航链接 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <p class="navtext">首页</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <p class="navtext">内容</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <p class="navtext">故事</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <p class="navtext">角色</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <p class="navtext">博客</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <p class="navtext">制作人员</p>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- 搜索表单 
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="搜索...">
+                    <button class="btn btn-outline-light" type="submit">搜索</button>
+                </form>-->
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面内容 -->
+    <div class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4">欢迎来到新秩序：东方红的Wiki</h1>
+            <p class="lead">这是更加详尽的由开发人员自行编写的Wiki。</p>
+        </div>
+    </div>
+
+    <div class="container content-section">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="intro">
+                    <h2>简介</h2>
+                    <p>一场死伤千万的战争，一个赓续十五年的统一战线，一条布满荆棘的未知前路。国防阵线委身于六十年代西北的苍茫天地间，誓要叩问中国革命的前途命运。</p>
+                    <p>玩家将可扮演西北国防阵线，探索拯救中国革命的路径及不同结局，国防阵线将从五十年代末的分裂阴霾中走出。在经略西北根据地壮大革命实力之外，玩家将与国防阵线一同迎接新秩序世界的命运……或是毁灭。
+                    </p>
+                </div>
+                <div class="link-we">
+                    <h2>请加入我们的交流群！</h2>
+                    <p>新秩序：东方红discord：<a href="https://discord.gg/jWrUcMst7J">@东方红discord社区服务器</a></p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header fs-6 fw-bold text-center" style="background-color: #55c8c3;">详细信息
+                    </div>
+                    <img src="./image/ter_absolute.png" />
+                    <div class="card-body bg-dark" style="padding:5px;">
+                        <div class="ter_table">
+                            <p><span>状态</span></p>
+                            <p>已发布 ＋ 开发中</p>
+                            <p><span>最近更新</span></p>
+                            <p>2025.9.8</p>
+                            <p><span>类型</span></p>
+                            <p>扩展、子模组</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <p style="color:white; padding-left: 200px;">Copyright © 2025 developers of TNO: The East is Red All Rights
+            Reserved.</p>
+    </footer>
     <!-- Bootstrap JS Bundle (已包含 Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
