@@ -1,6 +1,7 @@
 body {
     background-color: rgb(34, 33, 33);
     color: #55c8c3;
+    scroll-behavior: smooth;
 }
 
 .hero-section {
@@ -22,9 +23,14 @@ body {
     font-size: larger;
 }
 
+.navbar-brand {
+    margin-right: 20px;
+}
+
 .nav-item {
     max-width: 100px;
     align-content: center;
+    margin: 0px 10px;
 }
 
 .navtext {

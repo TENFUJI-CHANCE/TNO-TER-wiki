@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新秩序：东方红Wiki</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.1/dist/js-yaml.min.js"></script>
+    <script src="./js/story.js"></script>
+    <style>
+        .list-group {
+            border-color: transparent;
+        }
+
+        button {
+            background-color: transparent;
+            color: #55c8c3;
+            font-size: medium;
+        }
+
+        button:hover {
+            background-color: #55c8c3;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+
+            <!-- 品牌/logo -->
+            <a class="navbar-brand" href="#">
+                <img src="./image/ter_default.png" alt="Logo" width="76" height="59">
+            </a>
+
+            <!-- 导航链接 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">
+                            <p class="navtext">首页</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./content.html">
+                            <p class="navtext">内容</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <p class="navtext">故事</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./character.html">
+                            <p class="navtext">角色</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./blog.html">
+                            <p class="navtext">博客</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./developer.html">
+                            <p class="navtext">制作人员</p>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- 搜索表单 
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="搜索...">
+                    <button class="btn btn-outline-light" type="submit">搜索</button>
+                </form>-->
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面内容 -->
+    <div class="hero-section">
+        <div class="container text-center">
+            <h1>故事背景</h1>
+        </div>
+    </div>
+
+    <div class="container content-section">
+        <div class="row">
+            <div class="col-md-2">
+                <p class="fs-4 fw-bolder">惊梦</p>
+                <ul class="list-group">
+                    <li class="list-group-item"><button class="story_1">存在哲学</button></li>
+                    <li class="list-group-item"><button class="story_2">亚洲第二…</button></li>
+                    <li class="list-group-item"><button class="story_3">孤木难支</button></li>
+                    <li class="list-group-item"><button class="story_4">祸不单行</button></li>
+                    <li class="list-group-item"><button class="story_5">落井下石</button></li>
+                    <li class="list-group-item"><button class="story_6">他比你高出一格</button></li>
+                </ul>
+                <p class="fs-4 fw-bolder">连横</p>
+                <ul class="list-group">
+                    <li class="list-group-item"><button class="story_7">脱颖而出</button></li>
+                    <li class="list-group-item"><button class="story_8">宁渝合流</button></li>
+                    <li class="list-group-item"><button class="story_9">背水一战 - 上</button></li>
+                    <li class="list-group-item"><button class="story_10">背水一战 - 下</button></li>
+                </ul>
+                <p class="fs-4 fw-bolder">游魂</p>
+                <ul class="list-group">
+                    <li class="list-group-item"><button class="story_11">入主西安</button></li>
+                    <li class="list-group-item"><button class="story_12">消失的国际</button></li>
+                    <li class="list-group-item"><button class="story_13">戈壁绿洲</button></li>
+                    <li class="list-group-item"><button class="story_14">此地彼方</button></li>
+                </ul>
+                <p class="fs-4 fw-bolder">残山</p>
+                <ul class="list-group">
+                    <li class="list-group-item"><button class="story_15">改造</button></li>
+                    <li class="list-group-item"><button class="story_16">一日千里</button></li>
+                    <li class="list-group-item"><button class="story_17">二士竞功</button></li>
+                </ul>
+                <p class="fs-4 fw-bolder">余烬</p>
+                <ul class="list-group">
+                    <li class="list-group-item"><button class="story_18">怒火中烧</button></li>
+                    <li class="list-group-item"><button class="story_19">大跃进</button></li>
+                    <li class="list-group-item"><button class="story_20">余烬</button></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <article class="story_mes"></article>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p style="color:white; padding-left: 200px;">Copyright © 2025 developers of TNO: The East is Red All Rights
+            Reserved.</p>
+    </footer>
+    <!-- Bootstrap JS Bundle (已包含 Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
