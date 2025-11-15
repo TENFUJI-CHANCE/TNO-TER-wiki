@@ -12,7 +12,12 @@
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.1/dist/js-yaml.min.js"></script>
     <script src="./js/story.js"></script>
     <style>
-        .list-group {
+        h3 {
+            margin: 10px 0;
+            padding-top: 30px;
+        }
+
+        .list-group-item {
             border-color: transparent;
         }
 
@@ -89,14 +94,15 @@
     <!-- 页面内容 -->
     <div class="hero-section">
         <div class="container text-center">
-            <h1>故事背景</h1>
+            <h1 class="display-4">故事背景</h1>
+            <p class="lead">遥遥无期，谁为黑暗执灯。</p>
         </div>
     </div>
 
     <div class="container content-section">
         <div class="row">
             <div class="col-md-2">
-                <p class="fs-4 fw-bolder">惊梦</p>
+                <h3 class="fs-4 fw-bolder">惊梦</h3>
                 <ul class="list-group">
                     <li class="list-group-item"><button class="story_1">存在哲学</button></li>
                     <li class="list-group-item"><button class="story_2">亚洲第二…</button></li>
@@ -105,27 +111,27 @@
                     <li class="list-group-item"><button class="story_5">落井下石</button></li>
                     <li class="list-group-item"><button class="story_6">他比你高出一格</button></li>
                 </ul>
-                <p class="fs-4 fw-bolder">连横</p>
+                <h3 class="fs-4 fw-bolder">连横</h3>
                 <ul class="list-group">
                     <li class="list-group-item"><button class="story_7">脱颖而出</button></li>
                     <li class="list-group-item"><button class="story_8">宁渝合流</button></li>
                     <li class="list-group-item"><button class="story_9">背水一战 - 上</button></li>
                     <li class="list-group-item"><button class="story_10">背水一战 - 下</button></li>
                 </ul>
-                <p class="fs-4 fw-bolder">游魂</p>
+                <h3 class="fs-4 fw-bolder">游魂</h3>
                 <ul class="list-group">
                     <li class="list-group-item"><button class="story_11">入主西安</button></li>
                     <li class="list-group-item"><button class="story_12">消失的国际</button></li>
                     <li class="list-group-item"><button class="story_13">戈壁绿洲</button></li>
                     <li class="list-group-item"><button class="story_14">此地彼方</button></li>
                 </ul>
-                <p class="fs-4 fw-bolder">残山</p>
+                <h3 class="fs-4 fw-bolder">残山</h3>
                 <ul class="list-group">
                     <li class="list-group-item"><button class="story_15">改造</button></li>
                     <li class="list-group-item"><button class="story_16">一日千里</button></li>
                     <li class="list-group-item"><button class="story_17">二士竞功</button></li>
                 </ul>
-                <p class="fs-4 fw-bolder">余烬</p>
+                <h3 class="fs-4 fw-bolder">余烬</h3>
                 <ul class="list-group">
                     <li class="list-group-item"><button class="story_18">怒火中烧</button></li>
                     <li class="list-group-item"><button class="story_19">大跃进</button></li>
@@ -133,6 +139,7 @@
                 </ul>
             </div>
             <div class="col-md-6">
+                <h3 class="fs-3 fw-bolder" id="title"></h3>
                 <article class="story_mes"></article>
             </div>
             <div class="col-md-4"></div>
@@ -141,7 +148,7 @@
 
     <footer>
         <p style="color:white; padding-left: 200px;">Copyright © 2025 developers of TNO: The East is Red All Rights
-            Reserved.</p>
+            Reserved.Designed by TENFUJI CHANCE</p>
     </footer>
     <!-- Bootstrap JS Bundle (已包含 Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
