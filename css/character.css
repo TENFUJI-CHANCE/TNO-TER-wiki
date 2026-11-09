@@ -1,0 +1,299 @@
+.chara-wall-parent{
+
+}
+/* ========== 名人墙网格（最多 7 列） ========== */
+.wall {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 24px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+@media (max-width: 1400px) { .wall { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@media (max-width: 1200px) { .wall { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (max-width: 992px)  { .wall { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 768px)  { .wall { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px)  { .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 16px; } }
+@media (max-width: 380px)  { .wall { grid-template-columns: 1fr; } }
+
+/* ========== 卡片外框 ========== */
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 156px;
+  margin: 0 auto;
+  background: transparent;
+  border: 2px solid #40e4dc;
+  overflow: hidden;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 0 0 1px #40e4dc, 0 10px 24px rgba(64, 228, 220, 0.25);
+  outline: none;
+}
+
+/* 头像区：锁定 156 × 210 比例 */
+.portrait {
+  width: 100%;
+  aspect-ratio: 156 / 210;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  font-weight: 700;
+  color: #40e4dc;
+  background: #000;
+  user-select: none;
+}
+
+/* 分隔线 */
+.divider {
+  height: 2px;
+  background: #40e4dc;
+  flex-shrink: 0;
+}
+
+/* 文字区 */
+.info {
+  padding: 10px 8px 12px;
+  text-align: center;
+}
+
+.card-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #e6fffe;
+  word-break: break-word;
+}
+
+.card-field {
+  margin: 4px 0 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #40e4dc;
+  opacity: 0.85;
+}
+/* ========== 详情打开时的卡片状态 ========== */
+.card.card-out {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+.card.is-hidden {
+  visibility: hidden;
+}
+
+/* ========== 详情层 ========== */
+.detail-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.detail-layer.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.detail-layer[hidden] {
+  display: none;
+}
+
+.detail-inner {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+/* 飞到左侧的头像 */
+.detail-portrait {
+  width: 100%;
+  max-width: 156px;
+  aspect-ratio: 156 / 210;
+  flex-shrink: 0;
+  background: #000;
+  border: 2px solid #40e4dc;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.detail-portrait > * {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-portrait .avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+  font-weight: 700;
+  color: #40e4dc;
+  background: #000;
+}
+
+/* 右侧介绍方框 */
+.detail-box {
+  flex: 1;
+  min-width: 0;
+  background: #000;
+  border: 2px solid #40e4dc;
+  padding: 28px 32px;
+  color: #e6fffe;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.detail-box.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.detail-close {
+  float: right;
+  background: none;
+  border: none;
+  color: #40e4dc;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0 8px 8px;
+}
+.detail-close:hover { color: #7ffff5; }
+
+.detail-name  { margin: 0 0 8px;  font-size: 24px; color: #40e4dc; }
+.detail-field { margin: 0 0 16px; font-size: 14px; color: #40e4dc; opacity: 0.8; }
+.detail-bio   { margin: 0; font-size: 14px; line-height: 1.85; color: #e6fffe; }
+
+/* ========== 正文（来自 Markdown 渲染结果） ========== */
+.detail-bio > :first-child { margin-top: 0; }
+.detail-bio > :last-child  { margin-bottom: 0; }
+.detail-bio p  { margin: 0 0 14px; }
+.detail-bio strong { color: #40e4dc; font-weight: 600; }
+.detail-bio em { color: #9ceee9; font-style: italic; }
+.detail-bio a  { color: #40e4dc; text-decoration: underline; }
+.detail-bio a:hover { color: #7ffff5; }
+
+.detail-bio ul,
+.detail-bio ol { margin: 0 0 14px; padding-left: 22px; }
+.detail-bio li { margin-bottom: 6px; }
+.detail-bio li::marker { color: #40e4dc; }
+
+.detail-bio blockquote {
+  margin: 0 0 14px;
+  padding: 6px 14px;
+  border-left: 2px solid #40e4dc;
+  background: rgba(64, 228, 220, 0.06);
+  color: #9ceee9;
+}
+
+.detail-bio code {
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(64, 228, 220, 0.12);
+  font-size: 0.92em;
+}
+
+.detail-bio hr {
+  margin: 16px 0;
+  border: 0;
+  border-top: 1px solid rgba(64, 228, 220, 0.25);
+}
+
+/* ========== 加载提示 / 空数据 ========== */
+.wall-notice {
+  grid-column: 1 / -1;
+  padding: 64px 16px;
+  text-align: center;
+  color: #40e4dc;
+}
+
+.wall-notice .notice-title {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.wall-notice .notice-desc {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: #9ca3af;
+  line-height: 1.7;
+}
+
+.wall-notice > code {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #e6fffe;
+  background: rgba(64, 228, 220, 0.12);
+  border: 1px solid rgba(64, 228, 220, 0.35);
+  word-break: break-all;
+}
+
+.wall-notice .notice-desc code {
+  padding: 0 4px;
+  font-size: 0.94em;
+  color: #e6fffe;
+  background: rgba(64, 228, 220, 0.12);
+}
+
+/* 锁定背景滚动 */
+body.no-scroll { overflow: hidden; }
+
+/* 小屏适配 */
+@media (max-width: 720px) {
+  .detail-inner {
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  .detail-portrait { width: 180px; }
+  .detail-box { max-height: none; width: 100%; }
+}

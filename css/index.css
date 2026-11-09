@@ -1,0 +1,136 @@
+/* ============================================================
+   首页（index.html）视觉优化
+   —— 只调整排版与配色，不改 HTML 结构
+   加载顺序：bootstrap → main.css → index.css
+   ============================================================ */
+
+/* ========== 正文排版 ========== */
+.content-section {
+  padding-top: 56px;
+  padding-bottom: 40px;
+}
+
+/* 小节标题：左侧青色竖条，弱化 Bootstrap 默认的大字号 */
+.content-section h2 {
+  margin: 0 0 16px;
+  padding-left: 12px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #40e4dc;
+  border-left: 3px solid #40e4dc;
+}
+
+.content-section p {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.95;
+  color: #d9f5f2;
+}
+
+.content-section a {
+  color: #40e4dc;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.content-section a:hover {
+  color: #7ffff5;
+}
+
+/* 简介首段略微强调 */
+.intro p:first-of-type {
+  font-size: 15.5px;
+  color: #e6fffe;
+}
+
+/* 「致谢 / 纪念 / 声明」是名单式内容，行距收紧一些 */
+.link-we p {
+  margin-bottom: 6px;
+  color: #c9eae7;
+}
+
+/* 区块之间留白更均匀 */
+.intro + .link-we,
+.link-we + .link-we {
+  padding-top: 34px;
+}
+
+/* ========== 右侧信息卡 ========== */
+.content-section .card {
+  border: 1px solid #55c8c3;
+  border-radius: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.content-section .card-header {
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #0e2b28;             /* 青底配深色字，保证对比度 */
+  background-color: #55c8c3;
+  border-radius: 0;
+  border-bottom: 0;
+}
+
+/* 原图 512×512，不限制会撑破卡片 */
+.content-section .card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.content-section .card-body {
+  padding: 10px;         /* 原为行内 padding:5px，收紧过头 */
+}
+
+/* 2 列参数表：标签居中偏弱，数值左对齐突出 */
+.ter_table {
+  padding: 4px 0 0;
+  align-items: center;
+  row-gap: 2px;
+}
+
+.content-section .ter_table p {
+  margin: 0;
+  padding: 6px 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: left;
+  color: #e6fffe;
+  background: transparent;
+}
+
+.content-section .ter_table p:nth-child(odd) {
+  text-align: center;
+  color: #55c8c3;
+  border-right: 1px solid rgba(85, 200, 195, 0.25);
+}
+
+.content-section .ter_table p span {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ========== 小屏 ========== */
+@media (max-width: 767px) {
+  .content-section {
+    padding-top: 36px;
+  }
+
+  .content-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .content-section p {
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+
+  .content-section .card {
+    margin-top: 28px;
+  }
+}

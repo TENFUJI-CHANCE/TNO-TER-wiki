@@ -1,0 +1,72 @@
+/* ============================================================
+   制作人员页（developer.html）
+   组别标题 + 成员名单的排版，内容仍保持原来的纯文本
+   ============================================================ */
+
+/* 原先是 col-md-8 + 200px 行内左缩进，窄屏会挤成一条细缝；
+   现在改为居中定宽，长名单读起来更整齐 */
+.dev-list {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 4px;
+}
+
+/* ========== 组别标题 ========== */
+.dev-list h2 {
+  margin: 46px 0 14px;
+  padding-left: 12px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #40e4dc;
+  border-left: 3px solid #40e4dc;
+}
+
+.dev-list h2:first-of-type {
+  margin-top: 6px;
+}
+
+/* 英文副标题：缩小、加字距、压低对比，中文组名才是主角 */
+.dev-en {
+  margin-left: 2px;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(156, 238, 233, 0.5);
+  white-space: nowrap;
+}
+
+/* ========== 成员名单 ========== */
+.dev-list p {
+  margin: 0 0 10px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  letter-spacing: 0.3px;
+  color: #d9f5f2;
+  word-break: break-word;
+}
+
+/* 每组最后一段与下一个标题之间留出呼吸 */
+.dev-list p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ========== 小屏 ========== */
+@media (max-width: 767px) {
+  .dev-list h2 {
+    margin: 34px 0 12px;
+    font-size: 1.15rem;
+  }
+
+  .dev-en {
+    display: block;
+    margin: 4px 0 0;
+    font-size: 0.72em;
+    letter-spacing: 1.5px;
+  }
+
+  .dev-list p {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+}

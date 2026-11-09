@@ -1,16 +1,52 @@
-body {
-    background-color: rgb(34, 33, 33);
-    color: #55c8c3;
+html {
+    /* 平滑滚动要对滚动容器（html）生效，写在 body 上在部分浏览器里无效 */
     scroll-behavior: smooth;
 }
 
+body {
+    background-color: rgb(34, 33, 33);
+    color: #55c8c3;
+}
+
+/* ========== 顶部横幅（全站通用背景） ========== */
 .hero-section {
+    position: relative;
     background-image: url("../image/ter_absolute.png");
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     padding: 100px 0;
     margin-bottom: 30px;
     color: #40e4dc;
+}
+
+/* 原图 512×512，铺满宽屏后偏糊，压一层渐变让文字更清楚 */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(18, 18, 18, 0.35), rgba(18, 18, 18, 0.68));
+    pointer-events: none;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section .display-4 {
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
+}
+
+.hero-section .lead {
+    margin-top: 14px;
+    margin-bottom: 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #9ceee9;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.85);
 }
 
 .content-section {
@@ -89,4 +125,33 @@ body {
     list-style-type: none;
     border-top: 1px solid #333333;
     margin: 20px 0;
+}
+
+/* ========== 页脚（全站通用） ========== */
+footer {
+    margin-top: 56px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(85, 200, 195, 0.22);
+    background: rgba(0, 0, 0, 0.28);
+}
+
+footer .footer-text {
+    margin: 0;
+    padding: 0 16px;
+    font-size: 12.5px;
+    line-height: 1.8;
+    text-align: center;
+    color: rgba(230, 255, 254, 0.7);
+}
+
+/* ========== 小屏 ========== */
+@media (max-width: 767px) {
+    .hero-section {
+        padding: 72px 0;
+    }
+
+    .hero-section .display-4 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
 }

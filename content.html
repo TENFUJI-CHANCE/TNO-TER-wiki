@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新秩序：东方红Wiki</title>
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./vendor/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/main.css" />
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="./css/content.css" />
+    <script src="./vendor/marked.min.js"></script>
 </head>
 
 <body>
@@ -76,12 +77,45 @@
         </div>
     </div>
 
+    <!-- 正文：左「横向目录 + Markdown 内容」，右「2×2 信息表」 -->
+    <div class="container content-wrap">
+        <div class="content-layout">
+
+            <!-- 左侧：内容区 -->
+            <section class="content-main">
+                <!-- 横向目录：由 data/content.md 里的 "## 标题" 自动生成 -->
+                <nav class="content-nav" aria-label="内容目录"></nav>
+
+                <!-- Markdown 渲染结果 -->
+                <div class="content-body">
+                    <p class="content-hint">正在加载内容…</p>
+                </div>
+            </section>
+
+            <!-- 右侧：2×2 信息表，左列 : 右列 = 1 : 4 -->
+            <aside class="content-side">
+                <div class="info-card">
+                    <div class="info-card-title">详细信息</div>
+                    <div class="info-table">
+                        <div class="info-key">状态</div>
+                        <div class="info-val">已发布 ＋ 开发中</div>
+                        <div class="info-key">最近更新</div>
+                        <div class="info-val">2025.9.8</div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
     <footer>
-        <p style="color:white; padding-left: 200px;">Copyright © 2025 The New Order: The East is Red Development Team
+        <p class="footer-text">Copyright © 2025 The New Order: The East is Red Development Team
             All Rights Reserved.Designed by TENFUJI CHANCE</p>
     </footer>
     <!-- Bootstrap JS Bundle (已包含 Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./vendor/bootstrap.bundle.min.js"></script>
+    <script src="./js/md-sections.js"></script>
+    <script src="./js/content.js"></script>
 </body>
 
 </html>
