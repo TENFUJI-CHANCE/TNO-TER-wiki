@@ -12,7 +12,7 @@
  *   正文 Markdown……
  *
  * 用法：
- *   MDSections.parse(markdown, { alias: { 领域: 'field' } })
+ *   MDSections.parse(markdown, { alias: { 职位: 'field' } })
  *   → [{ id, title, meta, body, html }, ...]
  * ============================================================ */
 (function (global) {
@@ -56,23 +56,31 @@
       const title = lines.shift().replace(/[*_`]/g, '').trim();
 
       // 2) 元信息：跳过空行后连续读取 "- 键: 值"
+      //    只有第一行是「已知键」才认为是元信息块；块内出现未知键
+      //    不中断（跳过即可），直到空行或非列表行结束。
       const meta = {};
       let cursor = 0;
       while (cursor < lines.length && !lines[cursor].trim()) cursor++;
 
-      while (cursor < lines.length) {
-        const line = lines[cursor].trim();
-        if (!line) { cursor++; break; }
+      const firstLine = cursor < lines.length ? lines[cursor].trim() : '';
+      const firstMatch = firstLine.match(/^[-*+]\s*([^:：]+?)\s*[:：]\s*(.*)$/);
+      const firstKey = firstMatch
+        ? (alias[firstMatch[1].trim().toLowerCase()] || alias[firstMatch[1].trim()])
+        : null;
 
-        const matched = line.match(/^[-*+]\s*([^:：]+?)\s*[:：]\s*(.*)$/);
-        if (!matched) break;
+      if (firstKey) {
+        while (cursor < lines.length) {
+          const line = lines[cursor].trim();
+          if (!line) { cursor++; break; }
 
-        const label = matched[1].trim();
-        const key = alias[label.toLowerCase()] || alias[label];
-        if (!key) break;                    // 未知键：当作正文列表，不吞掉
+          const matched = line.match(/^[-*+]\s*([^:：]+?)\s*[:：]\s*(.*)$/);
+          if (!matched) break;
 
-        meta[key] = matched[2].trim();
-        cursor++;
+          const label = matched[1].trim();
+          const key = alias[label.toLowerCase()] || alias[label];
+          if (key) meta[key] = matched[2].trim();   // 未知键跳过，但仍算元信息行
+          cursor++;
+        }
       }
 
       // 3) 剩余空行之后即正文

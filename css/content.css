@@ -41,34 +41,7 @@
   background: rgba(64, 228, 220, 0.4);
 }
 
-.content-nav-btn {
-  flex: 0 0 auto;
-  padding: 6px 14px;
-  font-size: 13px;
-  line-height: 1.4;
-  color: #55c8c3;
-  background: transparent;
-  border: 1px solid rgba(64, 228, 220, 0.35);
-  border-radius: 2px;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease,
-              background-color 0.2s ease;
-}
-
-.content-nav-btn:hover,
-.content-nav-btn:focus-visible {
-  color: #7ffff5;
-  border-color: #7ffff5;
-  outline: none;
-}
-
-.content-nav-btn.is-active {
-  color: rgb(34, 33, 33);
-  background: #40e4dc;
-  border-color: #40e4dc;
-  font-weight: 600;
-}
+/* 按钮样式见 main.css 的 .tab-btn（与角色页共用） */
 
 /* 切换小节时高度不剧烈跳动 */
 .content-body {

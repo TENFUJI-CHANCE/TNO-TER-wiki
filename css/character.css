@@ -1,6 +1,51 @@
 .chara-wall-parent{
 
 }
+
+/* ========== 分类标签栏 ========== */
+/* 通栏吸顶，内层与人物墙同宽，滚动时始终能切换分类 */
+.chara-navbar {
+  position: sticky;
+  top: 76px;                       /* 让开顶部导航栏 */
+  z-index: 6;
+  background: rgb(34, 33, 33);
+  border-bottom: 1px solid rgba(64, 228, 220, 0.25);
+}
+
+.chara-navbar[hidden] {
+  display: none;
+}
+
+.chara-nav {
+  display: flex;
+  gap: 8px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(64, 228, 220, 0.4) transparent;
+}
+
+.chara-nav::-webkit-scrollbar { height: 4px; }
+.chara-nav::-webkit-scrollbar-thumb { background: rgba(64, 228, 220, 0.4); }
+
+/* ========== 分类面板（一次只显示一组） ========== */
+.chara-panel { display: none; }
+
+.chara-panel.is-active {
+  display: block;
+  animation: chara-fade 0.28s ease both;
+}
+
+@keyframes chara-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chara-panel.is-active { animation: none; }
+}
 /* ========== 名人墙网格（最多 7 列） ========== */
 .wall {
   display: grid;
@@ -103,143 +148,117 @@
   color: #40e4dc;
   opacity: 0.85;
 }
-/* ========== 详情打开时的卡片状态 ========== */
-.card.card-out {
+/* ========== 详情区：占人物墙第一行，头像落在第一格 ========== */
+.chara-stage {
+  /* 横跨整行；列宽继承人物墙，头像因此落在第一格中心 */
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: inherit;
+  gap: 16px;
+  align-items: start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(64, 228, 220, 0.25);
   opacity: 0;
-  transform: scale(0.9);
-  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
-.card.is-hidden {
-  visibility: hidden;
-}
+.chara-stage.is-open { opacity: 1; }
 
-/* ========== 详情层 ========== */
-.detail-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
-}
-.detail-layer.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-.detail-layer[hidden] {
-  display: none;
-}
-
-.detail-inner {
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  max-width: 1000px;
-  width: 100%;
-  padding: 0 48px;
-  box-sizing: border-box;
-}
-
-/* 飞到左侧的头像 */
-.detail-portrait {
-  width: 100%;
-  max-width: 156px;
+/* 落到第一格的头像，尺寸与卡片头像完全一致 */
+.stage-portrait {
+  grid-column: 1;
+  justify-self: center;
+  width: 156px;
   aspect-ratio: 156 / 210;
-  flex-shrink: 0;
   background: #000;
   border: 2px solid #40e4dc;
+  box-sizing: border-box;
   overflow: hidden;
+  cursor: pointer;
   will-change: transform;
 }
 
-.detail-portrait > * {
+.stage-portrait > * {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.detail-portrait .avatar {
+.stage-portrait .avatar {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 100px;
+  font-size: 88px;
   font-weight: 700;
   color: #40e4dc;
   background: #000;
+  user-select: none;
 }
 
-/* 右侧介绍方框 */
-.detail-box {
-  flex: 1;
+/* 右侧详情框：与头像同高，内容超出时内部滚动 */
+.stage-box {
+  grid-column: 2 / -1;
+  position: relative;
   min-width: 0;
-  background: #000;
-  border: 2px solid #40e4dc;
-  padding: 28px 32px;
-  color: #e6fffe;
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
-  max-height: 70vh;
+  height: 210px;
+  box-sizing: border-box;
+  padding: 16px 26px;
   overflow-y: auto;
-}
-.detail-box.show {
-  opacity: 1;
-  transform: translateX(0);
+  background: rgba(64, 228, 220, 0.04);
+  border: 1px solid rgba(64, 228, 220, 0.35);
+  border-left: 3px solid #40e4dc;
 }
 
-.detail-close {
-  float: right;
+.stage-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  padding: 2px 6px;
   background: none;
   border: none;
   color: #40e4dc;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 1;
   cursor: pointer;
-  padding: 0 0 8px 8px;
 }
-.detail-close:hover { color: #7ffff5; }
+.stage-close:hover { color: #7ffff5; }
 
-.detail-name  { margin: 0 0 8px;  font-size: 24px; color: #40e4dc; }
-.detail-field { margin: 0 0 16px; font-size: 14px; color: #40e4dc; opacity: 0.8; }
-.detail-bio   { margin: 0; font-size: 14px; line-height: 1.85; color: #e6fffe; }
+.stage-name  { margin: 0 0 6px;  padding-right: 30px; font-size: 22px; color: #40e4dc; }
+.stage-field { margin: 0 0 12px; font-size: 13.5px; color: #40e4dc; opacity: 0.8; }
+.stage-bio   { font-size: 14px; line-height: 1.85; color: #e6fffe; }
 
 /* ========== 正文（来自 Markdown 渲染结果） ========== */
-.detail-bio > :first-child { margin-top: 0; }
-.detail-bio > :last-child  { margin-bottom: 0; }
-.detail-bio p  { margin: 0 0 14px; }
-.detail-bio strong { color: #40e4dc; font-weight: 600; }
-.detail-bio em { color: #9ceee9; font-style: italic; }
-.detail-bio a  { color: #40e4dc; text-decoration: underline; }
-.detail-bio a:hover { color: #7ffff5; }
+.stage-bio > :first-child { margin-top: 0; }
+.stage-bio > :last-child  { margin-bottom: 0; }
+.stage-bio p  { margin: 0 0 12px; }
+.stage-bio strong { color: #40e4dc; font-weight: 600; }
+.stage-bio em { color: #9ceee9; font-style: italic; }
+.stage-bio a  { color: #40e4dc; text-decoration: underline; }
+.stage-bio a:hover { color: #7ffff5; }
 
-.detail-bio ul,
-.detail-bio ol { margin: 0 0 14px; padding-left: 22px; }
-.detail-bio li { margin-bottom: 6px; }
-.detail-bio li::marker { color: #40e4dc; }
+.stage-bio ul,
+.stage-bio ol { margin: 0 0 12px; padding-left: 22px; }
+.stage-bio li { margin-bottom: 5px; }
+.stage-bio li::marker { color: #40e4dc; }
 
-.detail-bio blockquote {
-  margin: 0 0 14px;
+.stage-bio blockquote {
+  margin: 0 0 12px;
   padding: 6px 14px;
   border-left: 2px solid #40e4dc;
   background: rgba(64, 228, 220, 0.06);
   color: #9ceee9;
 }
 
-.detail-bio code {
+.stage-bio code {
   padding: 1px 5px;
   border-radius: 3px;
   background: rgba(64, 228, 220, 0.12);
   font-size: 0.92em;
 }
 
-.detail-bio hr {
-  margin: 16px 0;
+.stage-bio hr {
+  margin: 14px 0;
   border: 0;
   border-top: 1px solid rgba(64, 228, 220, 0.25);
 }
@@ -282,18 +301,24 @@
   background: rgba(64, 228, 220, 0.12);
 }
 
-/* 锁定背景滚动 */
-body.no-scroll { overflow: hidden; }
-
-/* 小屏适配 */
+/* 小屏适配：头像在上、详情在下 */
 @media (max-width: 720px) {
-  .detail-inner {
+  .chara-stage {
+    display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding: 24px;
-    max-height: 100vh;
-    overflow-y: auto;
+    gap: 16px;
   }
-  .detail-portrait { width: 180px; }
-  .detail-box { max-height: none; width: 100%; }
+  .stage-portrait {
+    width: 140px;
+  }
+  .stage-box {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .chara-nav { padding: 8px 16px; gap: 6px; }
+  .chara-nav .tab-btn { padding: 5px 12px; font-size: 12.5px; }
 }

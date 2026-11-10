@@ -77,18 +77,14 @@
         </div>
     </div>
 
-    <div class="chara-wall-parent" ><div class="wall" ></div>
-    <div class="detail-layer" hidden aria-hidden="true">
-        <div class="detail-inner">
-            <div class="detail-portrait" ></div>
-            <div class="detail-box" >
-                <button class="detail-close" aria-label="关闭">&times;</button>
-                <h2 class="detail-name"></h2>
-                <p class="detail-field"></p>
-                <p class="detail-bio"></p>
-            </div>
+    <div class="chara-wall-parent">
+        <!-- 分类标签栏：由 js/character.js 按 characters.md 的「分类」生成 -->
+        <div class="chara-navbar">
+            <nav class="chara-nav" role="tablist" aria-label="人物分类"></nav>
         </div>
-    </div>
+
+        <!-- 各分类的人物墙（详情区在点击后插入这一墙的第一行） -->
+        <div class="chara-body"></div>
     </div>
     <footer>
         <p class="footer-text">Copyright © 2025 The New Order: The East is Red Development Team

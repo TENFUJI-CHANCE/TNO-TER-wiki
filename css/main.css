@@ -127,6 +127,47 @@ body {
     margin: 20px 0;
 }
 
+/* ========== 通用标签页按钮（内容页 / 角色页共用） ========== */
+.tab-btn {
+    flex: 0 0 auto;
+    padding: 6px 14px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #55c8c3;
+    background: transparent;
+    border: 1px solid rgba(64, 228, 220, 0.35);
+    border-radius: 2px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.tab-btn:hover,
+.tab-btn:focus-visible {
+    color: #7ffff5;
+    border-color: #7ffff5;
+    outline: none;
+}
+
+.tab-btn.is-active {
+    color: rgb(34, 33, 33);
+    background: #40e4dc;
+    border-color: #40e4dc;
+    font-weight: 600;
+}
+
+/* 分类标签上的人数 */
+.tab-btn .tab-count {
+    margin-left: 6px;
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.65;
+}
+
+.tab-btn.is-active .tab-count {
+    opacity: 0.75;
+}
+
 /* ========== 页脚（全站通用） ========== */
 footer {
     margin-top: 56px;

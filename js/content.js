@@ -32,7 +32,7 @@ function buildSections(list) {
     // 横向按钮
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'content-nav-btn';
+    btn.className = 'tab-btn content-nav-btn';
     btn.id = `tab-${id}`;
     btn.dataset.target = id;
     btn.textContent = raw.title;
